@@ -65,6 +65,30 @@ public class Application {
         printLogo(currentThickess);
     }
 
+    private int getThickNess() {
+        Scanner scanner = new Scanner(System.in);
+        int n = 0;
+        boolean changed=false;
+
+        while (n < 3 || n > 9999 || n % 2 == 0) {
+
+            try {
+                System.out.print("\nPlease enter desired thickness: ");
+                n = Integer.parseInt(scanner.nextLine().trim());
+                changed=true;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter ODD number from 3 up to 9999.");
+            }
+
+            if(changed&&(n < 3 || n > 9999 || n % 2 == 0)){
+                System.out.println("Invalid input. Please enter ODD number from 3 up to 9999.");
+            }
+
+        }
+
+        return n;
+    }
+
 
     private void printLogo(int n){
         //add logic for printing the logo with thickness N
