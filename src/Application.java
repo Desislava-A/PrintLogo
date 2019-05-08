@@ -58,4 +58,15 @@ public class Application {
 
     }
 
+    private void showPrintLogoDialogue() {
+        System.out.println("\nPlease enter ODD number for desired thickness of the logo.");
+        System.out.println("Thickness should be ODD number from 3 up to 9999 inclusively");
+        int currentThickess = getThickNess();
+        printLogo(currentThickess);
+    }
+
+
+    private void printLogo(int n){
+        //add logic for printing the logo with thickness N
+    }
 }
