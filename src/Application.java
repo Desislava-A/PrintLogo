@@ -4,6 +4,7 @@ public class Application {
 
     private boolean exit = false;
 
+
     public void runMenu() {
 
         printWelcomeNote();
@@ -26,6 +27,8 @@ public class Application {
         System.out.println("   ++   To EXIT the application, please enter:  0");
     }
 
+    String invalidMainChoiceMsg = "   X    Invalid input. Please enter 1 or 0.";
+
     private int getMainInput() {
         Scanner scanner = new Scanner(System.in);
         int selection = -1;
@@ -33,14 +36,14 @@ public class Application {
         while (selection < 0 || selection > 1) {
             boolean changed = false;
             try {
-                System.out.print("\nPlease enter your input: ");
+                System.out.print("\n   ++   Please enter your choice: ");
                 selection = Integer.parseInt(scanner.nextLine());
                 changed = true;
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter 1 or 0.");
+                System.out.println(invalidMainChoiceMsg);
             }
             if (changed && (selection < 0 || selection > 1)) {
-                System.out.println("Invalid input. Please enter 1 or 0.");
+                System.out.println(invalidMainChoiceMsg);
             }
 
         }
@@ -52,7 +55,7 @@ public class Application {
         switch (selected) {
             case 0:
                 exit = true;
-                System.out.println("You successfully exited the application.");
+                System.out.println("\nYou successfully exited the application.");
                 break;
             case 1:
                 showPrintLogoDialogue();
@@ -65,11 +68,13 @@ public class Application {
     }
 
     private void showPrintLogoDialogue() {
-        System.out.println("\nPlease enter ODD number for desired thickness of the logo.");
-        System.out.println("Thickness should be ODD number from 3 up to 9999 inclusively");
+        System.out.println("\n   +++  Please enter ODD number for desired thickness of the logo.");
+        System.out.println("   +++  Thickness should be ODD number from 3 to 9999 inclusive.");
         int currentThickess = getThickNess();
         printLogo(currentThickess);
     }
+
+    String invalidThicknessMsg = "   X    Invalid input.Please enter ODD number from 3 to 9999 inclusive.";
 
     private int getThickNess() {
         Scanner scanner = new Scanner(System.in);
@@ -80,15 +85,15 @@ public class Application {
             boolean changed = false;
 
             try {
-                System.out.print("\nPlease enter desired thickness: ");
+                System.out.print("\n   +++  Please enter desired thickness: ");
                 n = Integer.parseInt(scanner.nextLine().trim());
                 changed = true;
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter ODD number from 3 up to 9999.");
+                System.out.println(invalidThicknessMsg);
             }
 
             if (changed && (n < 3 || n > 9999 || n % 2 == 0)) {
-                System.out.println("Invalid input. Please enter ODD number from 3 up to 9999.");
+                System.out.println(invalidThicknessMsg);
             }
 
         }
